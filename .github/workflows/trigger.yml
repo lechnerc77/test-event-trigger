@@ -1,0 +1,26 @@
+name: trigger
+
+on:
+  workflow_dispatch:
+
+env:
+  EVENT_TYPE: btp-metadata-update
+  TARGET_OWNER: lechnerc77
+  TARGET_REPO: btp-setup-automator
+
+jobs:
+  update-metadata-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send event to dependent repositories
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          retry-exempt-status-codes: 400,401
+          retries: 3
+          script: |
+            github.rest.repos.createDispatchEvent({
+              owner: ${{ env.TARGET_OWNER }},
+              repo: ${{ env.TARGET_REPO }},
+              event_type: ${{ env.EVENT_TYPE }} 
+            })      
