@@ -21,7 +21,7 @@ jobs:
           github-token: ${{ secrets.BTPSA_EVENT_TOKEN }}
           script: |
             github.rest.repos.createDispatchEvent({
-              owner: ${{ env.TARGET_OWNER }},
-              repo: ${{ env.TARGET_REPO }},
-              event_type: ${{ env.EVENT_TYPE }} 
+              owner: "lechnerc77",
+              repo: "btp-setup-automator",
+              event_type: "btp-setup-automator"
             })      
