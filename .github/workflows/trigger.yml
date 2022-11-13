@@ -18,6 +18,7 @@ jobs:
           result-encoding: string
           retry-exempt-status-codes: 400,401
           retries: 3
+          github-token: ${{ secrets.BTPSA_EVENT_TOKEN }}
           script: |
             github.rest.repos.createDispatchEvent({
               owner: ${{ env.TARGET_OWNER }},
