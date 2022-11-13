@@ -3,11 +3,6 @@ name: trigger
 on:
   workflow_dispatch:
 
-env:
-  EVENT_TYPE: btp-metadata-update
-  TARGET_OWNER: lechnerc77
-  TARGET_REPO: btp-setup-automator
-
 jobs:
   update-metadata-artifacts:
     runs-on: ubuntu-latest
@@ -23,5 +18,5 @@ jobs:
             github.rest.repos.createDispatchEvent({
               owner: "lechnerc77",
               repo: "btp-setup-automator",
-              event_type: "btp-setup-automator"
+              event_type: "btp-metadata-update"
             })      
